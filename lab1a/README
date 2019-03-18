@@ -1,0 +1,16 @@
+###Psuedocode
+
+I store the input, output, error into a file array in positions 0, 1, 2. Everytime I read or write a file, I increment the fd index when I place the files into an array.
+
+To keep track of the commands, I dynamically create an array in which I parse the given statement by '--' and store the value into commands. I increment the position everytime I find a new argument and after the very last command, include the nullpointer to the execvp function knowns where to end. TA Alex helped me to figure out how to determine what the last arg was by keeping track of the option indicies (see code).
+
+If verbose is given, then will print the 
+	> --command, and the args from command
+	> --rdonly plus the file name 
+	> --wronly plus the file name
+
+Finally, once everything parsed, then fork into child and parent process. In the child process, dup2 the files (this will also take care of closing), then after dup, close the files. Finally execute and then increment the optind. (This part was also helped by TA Alex). My code was not working until TA alex helped me understand that I have to increment the optind.
+
+###Limitations
+
+A known limitation of my solution for lab 1A is that the simpsh is waiting for many seconds, so it is failing. I suspect the reason for this is the buffer is not being cleared and there are some memory allocation issues since the sys time for the simpsh is 0.006 instead of the desired time 0.000. The limitation is that the parent process does not wait for the child process to complete. 

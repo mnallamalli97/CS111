@@ -1,0 +1,77 @@
+NAME: Mehar Nallamalli
+EMAIL: mnallamalli97@ucla.edu
+ID: 804769644
+SLIPDAYS: 1
+
+##Description of files:
+
+	lab2_add.c---------- the driver code to run multiple threads and processes
+	lab2_list.c--------- driver code that is referenced with SortedList so run multiple threads and processes with LinkedList operations. 
+
+	lab2_add.gp--------- gnuplot to plot the values outputted by lab2_add.c (in a csv file).
+	lab2_list.gp-------- gnuplot to plot the values outputted by lab2_list.c (in a csv file).
+
+	SortedList.h-------- header file to show functions and extern variables for linked list functions.
+	SortedList.c-------- implementations of insert, delete, lookup, and length functions.
+
+
+
+
+
+##Answers to Questions:
+
+	Question 2.1.1: 
+
+		> Why does it take many iterations before errors are seen?
+
+		It takes many iterations because the cost of creating a thread is expensive. For small number of threads, one might even finish before the other begins. Since multiple threads are not running, there's no race condition. The more threads running at the same time, the greater the chance that the counter variable is trying to be updated at the same time. 
+
+		> Why does a significantly smaller number of iterations so seldom fail?
+
+		Less iterations means less time in the critical sections of the code, thus the possibility of race conditions is also seldom.
+
+	Question 2.1.2:
+
+		> Why are the --yield runs so much slower?
+		> Where is the additional time going?
+		> Is it possible to get valid per-operation timings if we are using the --yield option?
+		> If so, explain how. If not, explain why not. 
+
+		Yield runs are slower because when you call sched_yield(), it is a context switch that goes to kernel mode and will put the thread in waiting. If multiple threads waiting, then cannot get valid operation timings. The waiting adds a lot of time to the final runtime of thread.
+
+
+	Question 2.1.3:
+
+		> Why does the average cost per operation drop with increasing iterations?
+		> If the cost per iteration is a function of the number of iterations, how do we know how many iterations to run (or what the "correct" cost is)?
+
+		As stated above, the time cost to create a new thread is expensive, But with bulk (creating a lot of threads), the cost will be more reasonable. That is why the average cost decreases as you increase number of iterations. In GNU plot, see where the time to create threads is the same, and from that point on, it is same cost to make new threads.
+
+
+	Question 2.1.4: 
+
+		> Why do all of the options perform similarly for low numbers of threads?
+		> Why do the three protected operations slow down as the number of threads rises?
+
+		For low number of threads, only a small number of threads will lock immedietly. For higher threads, some other thread will be locked. So another thread will have to wait until it can be locked. This slows down protection. This is oppposite to spin lock. 
+
+
+	Question 2.2.1:
+
+		>  Compare the variation in time per mutex-protected operation vs the number of threads in Part-1 (adds) and Part-2 (sorted lists).
+		> Comment on the general shapes of the curves, and explain why they have this shape.
+		> Comment on the relative rates of increase and differences in the shapes of the curves, and offer an explanation for these differences.
+
+		See question 2.2.2 for why lists hold locks longer than add. The times/op is lower for lists than add. This is because more threads there are, more they will be fighting for a lock. Since the spin just locks all, and uses a lot of CPU resources, its cost is greater than mutex. Mutex will just put the thread to bed and then the CPU can use its resources to do other work while the thread is looking for a lock to be locked. 
+
+
+	Question 2.2.2:
+
+		> Compare the variation in time per protected operation vs the number of threads for list operations protected by Mutex vs Spin locks. Comment on the general shapes of the curves, and explain why they have this shape.
+		> Comment on the relative rates of increase and differences in the shapes of the curves, and offer an explanation for these differences.
+
+		Mutex is described in 2.1.4. For spin locks, the more threads there are, it will be slower because as a thread holds a lock, the other threads will keep on polling, using CPU resources. The mutex will increase in cost for lists than adds. The linked list locks will be held longer than the add locks. 
+
+
+
+

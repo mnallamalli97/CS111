@@ -1,0 +1,10 @@
+NAME: Mehar Nallamalli, Aditi Mittal
+EMAIL: mnallamalli97@ucla.edu,aditi.mittal2@gmail.com
+ID: 804769644, 104736807
+SLIPDAYS: 1
+
+Contents of tar file:
+
+lab3b.py - source code to parse thru the results of 3a and output error messages
+Makefile - compiles, cleans, and tars the files
+README - description of contents of tar file

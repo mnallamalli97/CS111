@@ -1,0 +1,38 @@
+NAME: Mehar Nallamalli
+EMAIL: mnallamalli97@ucla.edu
+UID: 804769644
+
+
+
+1. Description of the included files: 
+
+	lab0.c: 
+		+ This is a C source file and when compiled, creates a lab0 executable with the make command. 
+		+ It copies STDIN to STDOUT and can take optional arguments
+			+ --segfault which will force a seg fault
+			+ --catch which will catch segfault and regs SIGSEGV
+			+ --dump-core which will
+		+takes the required requiremets 
+			+ --input which will copy to STDIN
+			+ --output which will copy to STDOUT
+
+	Makefile: 
+		+ This will allow the user to build the executable with the make command.
+		+ tar the file with the make dist command
+		+ clean the folder with the make clean command
+		+ with the make <testxyz> commands, will run a smoke screen test to ensure basic functionality
+				+ These checks include
+					copying to output, 
+					valid input output
+					correctness of exit codes,
+					and catching of faults
+
+	breakpoint.png: 
+		+ Image of the lnxsrv shell that assigns a breakpoint to line 16 and will stop running the program and show the seg fault
+
+	backtrace.png: 
+		+ This will have no breakpoints, but when run, have a catch fault and its stack trace. 
+
+
+3. Resources: 
+	 + http://man7.org/linux/man-pages/man7/signal.7.html

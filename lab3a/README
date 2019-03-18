@@ -1,0 +1,10 @@
+NAME: Mehar Nallamalli
+EMAIL: mnallamalli97.ucla.edu
+ID: 804769644
+SLIPDAYS: 1
+
+Contents of tar file:
+
+lab3a.c - contains source code for project
+Makefile - compiles, cleans, and tars the files
+README - description of contents of tar file

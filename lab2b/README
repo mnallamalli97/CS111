@@ -1,0 +1,52 @@
+NAME: Mehar Nallamalli
+EMAIL: mnallamalli97@ucla.edu
+ID: 804769644
+SLIPDAYS: 1
+
+##Description of files:
+
+	lab2_add.c---------- the driver code to run multiple threads and processes
+	lab2_list.c--------- driver code that is referenced with SortedList so run multiple threads and processes with LinkedList operations. 
+
+	lab2_add.gp--------- gnuplot to plot the values outputted by lab2_add.c (in a csv file).
+	lab2_list.gp-------- gnuplot to plot the values outputted by lab2_list.c (in a csv file).
+
+	SortedList.h-------- header file to show functions and extern variables for linked list functions.
+	SortedList.c-------- implementations of insert, delete, lookup, and length functions.
+
+
+
+
+
+##Answers to Questions:
+
+	Question 2.3.1: 
+
+		> Most of the CPU cycles are spend in locking and unlocking because that is all the add implementation specifies. For list, most of the CPU cycles are taken up in sortedlist.c during traversing, deleting, lookingup, and inserting.
+
+		> As the threads increase, for list and add, most of the time is spent spinning because they share a lock. 
+
+		> For add, the mutex overhead in high-threads becomes leveled at a certain point. For lists, as the threads increase, the waiting for each thread increases and thus, the locks are longer. 
+
+	Question 2.3.2:
+
+		> Line 122 takesup the most cycles when the spin-lock version is run with large number of threads. 
+
+		while(__sync_lock_test_and_set(&spin_l, 1));
+
+		This operation is really expensive with more threads because needs to go thru and wait for every thread to lock. Thus, the CPU is continously spinning on this line and the throughput decreases. 
+
+	Question 2.3.3:
+
+		> If there are more threads, then more thereads will be waitinf for the lock. The average wait will increase since the threads before will have to wait longer for the current thread to finish.
+
+		> When the number of threads are more, the Sortedlist.c operation will take the same time, but since there are more threads, we will spend more time doing these operations. Thus, it is linearly dependent for average time per opertation and number of threads. The average wait time vs the number of threads, in contrary, is exponential (as described in 2.3.2).
+
+	Question 2.3.4:   
+
+		> As the number of lists increased, then the performances synchronized faster and become stabled. 
+
+		> I think that the throughput will continue to increase as the number of lists increase, but only to a certiain point. They will eventually hit a point where they level off. 
+
+		> If the number of lists is greater, then the throughput will be greater than a list with fewer threads. It seems reasonable to suggest the throughput of an N-way partitioned list should be the same as throughput of a single list with fewer threads. True.
+	

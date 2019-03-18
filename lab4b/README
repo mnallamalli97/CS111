@@ -1,0 +1,9 @@
+NAME: Mehar Nallamalli
+EMAIL: mnallamalli97@ucla.edu
+ID: 804769644
+
+lab4b.c - driver code run on the beaglebone. Init's the sensors and buttons, reads input from those sensors, converts to F or C temperature, and then displays either onto the console or a log file. 
+
+Makefile - compiles, cleans, builds a tarball, and then checks if log file created check. 
+
+
