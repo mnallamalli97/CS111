@@ -1,7 +1,7 @@
 # CS111
 Winter Quarter 2019 -- Paul Eggert 
 
-Lab 0 --   /100 \n
+Lab 0 --   /100 \
 Lab 1A --  /100
 Lab 1B --  /100
 Lab 1C --  /100
